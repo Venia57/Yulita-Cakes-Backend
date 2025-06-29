@@ -101,14 +101,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/user/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'getUser']);
     Route::put('/user/update', [AuthController::class, 'updateUser']);
-
     // Shopping Cart
     Route::delete('/user/shopping_cart/clear', [ShoppingCartController::class, 'clearCart']);
     Route::get('/user/shopping_cart', [ShoppingCartController::class, 'index']);
     Route::post('/user/shopping_cart', [ShoppingCartController::class, 'store']);
     Route::put('/user/shopping_cart/{cartItemId}', [ShoppingCartController::class, 'update']);
     Route::delete('/user/shopping_cart/{cartItemId}', [ShoppingCartController::class, 'destroy']);
-
     // Address
     Route::get('user/addresses', [AddressController::class, 'index']);
     Route::post('user/addresses', [AddressController::class, 'store']);
@@ -116,22 +114,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('user/addresses/{address}', [AddressController::class, 'update']);
     Route::delete('user/addresses/{address}', [AddressController::class, 'destroy']);
     Route::patch('user/addresses/{address}/set-default', [AddressController::class, 'setDefault']);
-
     // Order
     Route::get('user/orders', [SiteUserOrderController::class, 'index']);
     Route::get('user/orders/{order}', [SiteUserOrderController::class, 'show']);
     Route::post('user/orders/{order}/confirm-delivery', [SiteUserOrderController::class, 'confirmDelivery'])->name('orders.confirmDelivery');
-
     // Proudct Review
     Route::get('user/products/{productId}/review-eligibility', [SiteUserProductReviewController::class, 'eligibility']);
     Route::post('user/products/{productId}/reviews', [SiteUserProductReviewController::class, 'store']);
     Route::put('user/reviews/{review}', [SiteUserProductReviewController::class, 'update']);
     Route::patch('user/reviews/{review}', [SiteUserProductReviewController::class, 'update']);
     Route::delete('user/reviews/{review}', [SiteUserProductReviewController::class, 'destroy']);
-
     // Payment
     Route::post('/midtrans/snap-token', [SiteUserPaymentController::class, 'initiatePayment']);
-
     // Shipping Cost
     Route::post('/calculate-shipping-cost', [SiteUserShipmentController::class, 'calculateShippingCost']);
 });
